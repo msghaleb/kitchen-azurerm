@@ -305,9 +305,13 @@ New-NetFirewallRule -DisplayName "Windows Remote Management (HTTP-In)" -Name "Wi
             "properties": {
                 "publisher": "Microsoft.Compute",
                 "type": "CustomScriptExtension",
-                "typeHandlerVersion": "1.4",
+                "typeHandlerVersion": "1.7",
+		"autoUpgradeMinorVersion":true,
                 "settings": {
-                    "commandToExecute": "#{command}"
+			"ConfigureRemotingForAnsible": [
+          		"https://ghalebtestkitchen.blob.core.windows.net/testkitchen/ConfigureRemotingForAnsible.ps1"
+       		 ],
+       		 "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File ConfigureRemotingForAnsible.ps1"
                 }
             }
         }
